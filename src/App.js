@@ -21,7 +21,7 @@ const App = () => {
 // register- vali API
   const handleSave = async () => {
     try {
-      const response = await fetch('http://localhost:5000/register', {
+      const response = await fetch('https://formback1.onrender.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ const App = () => {
         return;
       }
 
-      const response = await fetch(`http://localhost:5000/user/${userId}`, {
+      const response = await fetch(`https://formback1.onrender.com/user/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
