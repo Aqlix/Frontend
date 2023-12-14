@@ -98,7 +98,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>User for'm</h1>
+      <h1>(Check console for API responses)</h1>
       <div className="form-group">
         <label>Full Name:</label>
         <input type="text" name="fullName" value={userData.fullName} onChange={handleChange} />
