@@ -117,7 +117,7 @@ const App = () => {
       <h1>(Check console for API responses)</h1>
       <div className="form-group">
         <label>Profile Photo:</label>
-        <input type='file' name="file" value={userData.file} onChange={handleimg} />
+        <input type='file' name="file" onChange={handleimg} />
 
       </div>
       <div className="form-group">
