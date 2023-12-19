@@ -9,30 +9,45 @@ const App = () => {
     password: ''
   });
 
-  const [userId, setUserId] = useState(null); 
+  const [userId, setUserId] = useState(null);
   const [savedUsers, setSavedUsers] = useState([]); //handle sve chlne pr, ye update hoga wiht new data
 
   const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false);
+
+  const [imageFile, setImageFile ] = useState([]);
+
+  const handleimg = (e) => { setImageFile(e.target.files[0]) }
+  // console.log(Image);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
   };
-// register- vali API
+  
+  // register- vali API
   const handleSave = async () => {
+    // console.log(userData, Image)
     try {
+    const formData = new FormData();
+    formData.append('file', imageFile);
+    formData.append('fullName', userData.fullName);
+    formData.append('username', userData.username);
+    formData.append('email', userData.email);
+    formData.append('password', userData.password);
+    
       const response = await fetch('https://formback1.onrender.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(userData)
+        // body: JSON.stringify(formData)
+        body: JSON.stringify(formData)
       });
 
       const data = await response.json();
       console.log('User saved:', data);
       setUserId(data._id);
-      setSavedUsers([...savedUsers,data]);
+      setSavedUsers([...savedUsers, data]);
 
       setUserData({
         fullName: '',
@@ -40,13 +55,14 @@ const App = () => {
         email: '',
         password: ''
       });
+      setImageFile(null);
 
-  
+
     } catch (error) {
       console.error('Error saving user:', error);
     }
   };
-// 
+  // 
   const handleUpdate = async () => {
     try {
       if (!userId) {
@@ -65,17 +81,17 @@ const App = () => {
       const data = await response.json();
       console.log(' updated data::', data);
 
-      
-  //     setSavedUsers(savedUsers.map((user) => (user._id === userId ? data : user)));
 
-  //     setIsUpdateFormOpen(false);
-  //   } catch (error) {
-  //     console.error('Error updating user:', error);
-  //   }
-  // };
-      
+      //     setSavedUsers(savedUsers.map((user) => (user._id === userId ? data : user)));
 
-     
+      //     setIsUpdateFormOpen(false);
+      //   } catch (error) {
+      //     console.error('Error updating user:', error);
+      //   }
+      // };
+
+
+
       setSavedUsers(savedUsers.map((user) => (user._id === userId ? data : user)));
 
       setIsUpdateFormOpen(false);
@@ -100,6 +116,11 @@ const App = () => {
     <div className="container">
       <h1>(Check console for API responses)</h1>
       <div className="form-group">
+        <label>Profile Photo:</label>
+        <input type='file' name="file" value={userData.file} onChange={handleimg} />
+
+      </div>
+      <div className="form-group">
         <label>Full Name:</label>
         <input type="text" name="fullName" value={userData.fullName} onChange={handleChange} />
       </div>
@@ -119,8 +140,8 @@ const App = () => {
       <button className="btn" onClick={handleSave}>
         Save User
       </button>
-      
-     
+
+
       {savedUsers.length > 0 && (
         <div className="saved-users">
           <h2>Saved Users</h2>
@@ -129,7 +150,7 @@ const App = () => {
               <p>Full Name: {user.fullName}</p>
               <p>Username: {user.username}</p>
               <p>Email: {user.email}</p>
-              
+
               <button className="btn btn-update" onClick={() => handleUpdateUser(user)}>
                 Update User
               </button>
@@ -138,8 +159,8 @@ const App = () => {
         </div>
       )}
 
-    
-     
+
+
       {isUpdateFormOpen && (
         <div className="update-form">
           <h2>Update User</h2>
