@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import ImageSlider from './imageSlider';
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -14,19 +15,19 @@ const App = () => {
 
   const [isUpdateFormOpen, setIsUpdateFormOpen] = useState(false);
 
-  const [imageFile, setImageFile ] = useState([]);
+  const [imageFile, setImageFile ] = useState(null);
 
   const handleimg = (e) => { setImageFile(e.target.files[0]) }
-  // console.log(Image);
+  //  console.log(imageFile);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
   };
-  
+  // console.log(userData)
   // register- vali API
   const handleSave = async () => {
-    // console.log(userData, Image)
+    console.log(userData)
     try {
     const formData = new FormData();
     formData.append('file', imageFile);
@@ -34,12 +35,10 @@ const App = () => {
     formData.append('username', userData.username);
     formData.append('email', userData.email);
     formData.append('password', userData.password);
-    
-      const response = await fetch('https://formback1.onrender.com/register', {
+    console.log(formData)
+      const response = await fetch(' http://localhost:5000/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+      
         // body: JSON.stringify(formData)
         body: formData
       });
@@ -59,8 +58,9 @@ const App = () => {
 
 
     } catch (error) {
-      console.error('Error saving user:', error);
+      console.error('Error saving user :', error);
     }
+    
   };
   // 
   const handleUpdate = async () => {
@@ -70,7 +70,7 @@ const App = () => {
         return;
       }
 
-      const response = await fetch(`https://formback1.onrender.com/user/${userId}`, {
+      const response = await fetch(` http://localhost:5000/user/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -113,6 +113,7 @@ const App = () => {
   };
 
   return (
+    <>
     <div className="container">
       <h1>(Check console for API responses)</h1>
       <div className="form-group">
@@ -147,6 +148,7 @@ const App = () => {
           <h2>Saved Users</h2>
           {savedUsers.map((user, index) => (
             <div key={index} className="user-post">
+           <img className='' src={`http://localhost:5000/uploads/${user.image}`} alt="USERPic" />
               <p>Full Name: {user.fullName}</p>
               <p>Username: {user.username}</p>
               <p>Email: {user.email}</p>
@@ -196,6 +198,10 @@ const App = () => {
         </div>
       )}
     </div>
+    <div>
+    {/* <ImageSlider /> */}
+    </div>
+    </>
   );
 };
 

@@ -55,3 +55,105 @@ input {
 .btn:hover {
   background-color: #0056b3;
 }
+
+.IMAGE{
+  object-fit: cover;
+  width: auto;
+}
+
+/* 
+/* ````````` */
+/* ImageSlider.css */
+/* ImageSlider.css */
+/* 
+
+.slider-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px; 
+}
+
+.slick-prev,
+.slick-next {
+  font-size: 24px;
+  color: #fff;
+}
+
+.slick-prev {
+  left: -30px;
+}
+
+.slick-next {
+  right: -30px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  color: #a0a0a0;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: 20px;
+  list-style: none;
+  display: flex !important;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.slick-dots li {
+  margin: 0 4px;
+  display: flex !important;
+}
+
+.slick-dots button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 10px;
+  height: 10px;
+  padding: 5px;
+  border: none;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slick-dots button:hover,
+.slick-dots button:focus {
+  background-color: #717171;
+}
+
+
+.slick-dots li {
+  margin: 0 4px;
+  display: flex !important;
+}
+
+.slick-dots button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 10px;
+  height: 10px;
+  padding: 5px;
+  border: none;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slick-dots button:hover,
+.slick-dots button:focus {
+  background-color: #717171;
+} */ 
