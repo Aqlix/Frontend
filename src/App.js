@@ -36,7 +36,7 @@ const App = () => {
     formData.append('email', userData.email);
     formData.append('password', userData.password);
     console.log(formData)
-      const response = await fetch(' http://localhost:5000/register', {
+      const response = await fetch(' https://formfront.onrender.com/register', {
         method: 'POST',
       
         // body: JSON.stringify(formData)
@@ -70,7 +70,7 @@ const App = () => {
         return;
       }
 
-      const response = await fetch(` http://localhost:5000/user/${userId}`, {
+      const response = await fetch(` https://formfront.onrender.com/user/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -148,7 +148,7 @@ const App = () => {
           <h2>Saved Users</h2>
           {savedUsers.map((user, index) => (
             <div key={index} className="user-post">
-           <img className='' src={`http://localhost:5000/uploads/${user.image}`} alt="USERPic" />
+           <img className='' src={`https://formfront.onrender.com/uploads/${user.image}`} alt="USERPic" />
               <p>Full Name: {user.fullName}</p>
               <p>Username: {user.username}</p>
               <p>Email: {user.email}</p>
