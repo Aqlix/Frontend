@@ -30,11 +30,11 @@ const App = () => {
     console.log(userData)
     try {
     const formData = new FormData();
-    formData.append('file', imageFile);
-    formData.append('fullName', userData.fullName);
-    formData.append('username', userData.username);
-    formData.append('email', userData.email);
-    formData.append('password', userData.password);
+    formData.append("file", imageFile);
+    formData.append("fullName", userData.fullName);
+    formData.append("username", userData.username);
+    formData.append("email", userData.email);
+    formData.append("password", userData.password);
     console.log(formData)
       const response = await fetch(' https://formfront.onrender.com/register', {
         method: 'POST',
